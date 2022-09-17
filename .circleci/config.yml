@@ -81,7 +81,7 @@ jobs:
           command: |
             cd ./frontend
             npm i
-            npm run build       
+            npm run test       
                 
   test-backend:
     docker:
@@ -95,7 +95,7 @@ jobs:
           command: |
             cd ./frontend
             npm i
-            npm run build     
+            npm run test     
             
 #   scan-frontend:
 #     docker:
