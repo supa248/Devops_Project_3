@@ -135,7 +135,7 @@ jobs:
           name: Scan Frontend
           command: |
             cd ./frontend
-            npm i
+            npm 
             
             npm audit --audit-level=critical 
 
