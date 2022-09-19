@@ -19,7 +19,7 @@ commands:
             aws cloudformation delete-stack --stack-name udapeople-backend-<< parameters.workflowID >>
 
       - run:
-          name: Destroy backend stack
+          name: Destroy frontend stack
           when: on_fail
           command: |
             aws cloudformation delete-stack --stack-name udapeople-frontend-<< parameters.workflowID >>
@@ -209,12 +209,12 @@ jobs:
             aws ec2 describe-instances \
               --query 'Reservations[*].Instances[*].PublicIpAddress' \
               --filters "Name=tag:project,Values=udapeople-backend-${CIRCLE_WORKFLOW_ID:0:7}" \
-              --output text >> ./.circleci/ansible/inventory.txt
-            cat ./.circleci/ansible/inventory.txt
+              --output text >> inventory.txt
+            cat inventory.txt
       - persist_to_workspace:
-          root: ~/
+          root: .
           paths:
-            - ./.circleci/ansible/inventory.txt
+            - .circleci/ansible/inventory.txt
       - destroy-environment:
           workflowID: ${CIRCLE_WORKFLOW_ID:0:7} 
                
