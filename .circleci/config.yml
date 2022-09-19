@@ -219,24 +219,28 @@ jobs:
           workflowID: ${CIRCLE_WORKFLOW_ID:0:7} 
                
 
-#   configure-infrastructure:
-#     docker:
-#       # Docker image here that supports Ansible
-#     steps:
-#       # Checkout code from git
-#       # Add ssh keys with fingerprint
-#       # attach workspace
-#       - run:
-#           name: Install dependencies
-#           command: |
-#             # Your code here
-#             exit 1
-#       - run:
-#           name: Configure server
-#           command: |
-#             # Your code here
-#             exit 1
-#       # Here's where you will add some code to rollback on failure      
+  # configure-infrastructure:
+  #   docker:
+  #     - image: python:3.7-alpine3.11
+  #   steps:
+  #     - checkout
+  #     - add_ssh_keys:
+  #         fingerprints: 
+  #           - "42:4e:8d:a7:0f:0d:c0:81:1f:6f:7d:65:d1:aa:e5:49"
+  #     - attach_workspace:
+  #         at: .
+  #     - run:
+  #         name: Install dependencies
+  #         command: |
+  #           apk add --update ansible
+  #           ansible --version
+  #           pip install awscli
+  #     - run:
+  #         name: Configure server
+  #         command: |
+  #           # Your code here
+  #           exit 1
+      # Here's where you will add some code to rollback on failure      
 
 #   run-migrations:
 #     docker:
